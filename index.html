@@ -4,14 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./posthog-init.js"></script>
   </head>
   <body>
     <h1>This is for testing purpose</h1>
 
-    <button onclick="welcome">Click Me</button>
+    <button onclick="welcome()">Click Me</button>
 
     <script>
       function welcome() {
+        window.posthog?.capture('welcome_button_clicked');
+        window.posthog?.logger?.info('welcome button clicked', {
+          action: 'welcome_button_clicked',
+        });
         console.log("Hi, Welcome");
       }
     </script>
